@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문의하기 — Hechi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='16' fill='%23C4202A'/%3E%3Crect y='16' width='32' height='16' fill='%232B5FC4'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --ink:#17223B; --body:#454E5C; --mut:#6B7484;
+  --line:#E7EBF1; --line-strong:#D4DAE3; --wash:#F5F7FA;
+  --accent:#2B5FC4; --accent-deep:#1E4AA0;
+  --danger:#C4202A; --dark:#141D31; --err:#C4202A;
+  --r-sm:8px; --r:12px; --r-lg:16px;
+  --shadow:0 1px 2px rgba(20,29,49,.05),0 6px 20px rgba(20,29,49,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:clip}
+body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-0.02em;font-size:16.5px;line-height:1.65;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+html[data-lang="en"] .only-ko{display:none}
+html:not([data-lang="en"]) .only-en{display:none}
+
+.btn{display:inline-block;padding:13px 24px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid transparent;border-radius:var(--r-sm);cursor:pointer;text-align:center;transition:transform .15s,box-shadow .15s,background .15s}
+.btn-solid{background:var(--accent);color:#fff;box-shadow:0 1px 2px rgba(20,29,49,.12)}
+.btn-solid:hover{background:var(--accent-deep);box-shadow:var(--shadow);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line-strong);color:var(--ink);background:#fff}
+.btn-ghost:hover{border-color:var(--ink);box-shadow:var(--shadow)}
+.btn-sm{padding:9px 16px;font-size:14px}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* 상단바 */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 28px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.brand-logo{height:36px;width:auto}
+.mark{width:28px;height:28px;background:linear-gradient(to bottom,var(--danger) 0 50%,var(--accent) 50% 100%);position:relative;flex-shrink:0}
+.mark::after{content:"";position:absolute;inset:7px;border:2.5px solid #fff}
+.brand strong{font-size:20px;font-weight:800;letter-spacing:-0.01em}
+.nav-actions{display:flex;align-items:center;gap:6px}
+.lang-toggle{display:flex;align-items:center;gap:6px;padding:8px 12px;font:inherit;font-size:14px;font-weight:700;color:var(--body);background:none;border:1px solid transparent;border-radius:var(--r-sm);cursor:pointer}
+.lang-toggle:hover{background:var(--wash);color:var(--ink)}
+.lang-toggle svg{width:18px;height:18px}
+.nav-link{padding:9px 14px;font-size:15px;font-weight:600;color:var(--body);text-decoration:none;border-radius:var(--r-sm)}
+.nav-link:hover{background:var(--wash);color:var(--ink)}
+.nav-actions .btn{margin-left:4px}
+
+/* 문의 */
+.contact{padding:80px 0 104px}
+.kicker{font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:14px}
+h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spacing:-0.03em}
+.contact .wrap{display:grid;grid-template-columns:0.8fr 1.2fr;gap:64px;align-items:start}
+.contact-info p{margin-top:18px;font-size:16px;line-height:1.75;color:var(--body);max-width:40ch}
+.contact-info dl{margin-top:32px;border-top:1px solid var(--line-strong)}
+.contact-info dt{padding-top:16px;font-size:13.5px;font-weight:700;color:var(--mut)}
+.contact-info dd{padding-bottom:16px;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--ink)}
+form.cform{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:40px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1/-1}
+.field label{font-size:14px;font-weight:600;margin-bottom:7px}
+.req{color:var(--accent)}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;font:inherit;font-size:15px;letter-spacing:-0.01em;border:1px solid var(--line-strong);background:#fff;color:var(--ink);border-radius:var(--r-sm);appearance:auto}
+.field textarea{min-height:130px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#9AA3B0}
+.consent{grid-column:1/-1;border:1px solid var(--line-strong);border-radius:var(--r-sm);overflow:hidden;margin-top:6px}
+.consent .c-all{display:flex;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid var(--line-strong);font-weight:700;font-size:15px}
+.consent .c-row{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--body)}
+.consent .c-row:last-child{border-bottom:none}
+.consent input[type=checkbox]{width:17px;height:17px;accent-color:var(--accent);flex-shrink:0}
+.viewall{margin-left:auto;font-size:13px;color:var(--mut);text-decoration:underline;flex-shrink:0}
+.viewall:hover{color:var(--ink)}
+.submit-row{grid-column:1/-1;margin-top:8px}
+.submit-row .btn{width:100%;padding:16px;font-size:16px}
+.form-foot{grid-column:1/-1;font-size:13px;color:var(--mut);line-height:1.6}
+.form-success{display:none;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:56px 40px;text-align:center}
+.form-success h3{font-size:22px;font-weight:700}
+.form-success p{margin-top:12px;font-size:15.5px;color:var(--body)}
+
+/* 푸터 */
+footer{background:var(--dark);color:rgba(255,255,255,.72);border-top:1px solid rgba(255,255,255,.14)}
+footer .wrap{padding:56px 24px 32px}
+.f-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.f-brand{max-width:38ch}
+.f-brand .brand strong{color:#fff}
+.f-brand .brand-logo{height:34px;filter:brightness(0) invert(1)}
+.f-brand p{margin-top:14px;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.6)}
+.f-cols{display:flex;gap:64px;flex-wrap:wrap}
+.f-cols h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:14px}
+.f-cols a{display:block;font-size:14.5px;color:rgba(255,255,255,.78);text-decoration:none;margin-bottom:9px}
+.f-cols a:hover{color:#fff}
+.f-bottom{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,.5)}
+.f-bottom a{color:inherit}
+
+@media (max-width:900px){ .contact .wrap{grid-template-columns:1fr;gap:44px} }
+@media (max-width:640px){
+  .topbar{padding:0 16px}
+  .nav-actions .nav-link{display:none}
+  .lang-toggle .lang-code{display:none}
+  .f-grid{grid-template-columns:1fr}
+  form.cform{padding:26px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 상단바 ============ -->
+<header class="topbar">
+  <a class="brand" href="index.html" aria-label="Hechi 홈">
+    <img class="brand-logo" src="assets/logo-hechi.png" alt="Hechi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+    <span class="mark" aria-hidden="true" style="display:none"></span>
+    <strong>Hechi</strong>
+  </a>
+  <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경 / Change language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2c3 3.5 3 16.5 0 20M12 2c-3 3.5-3 16.5 0 20"/></svg>
+      <span class="lang-code">KO</span>
+    </button>
+    <a class="nav-link" href="index.html#demo" data-en="Demo">데모</a>
+    <a class="btn btn-solid btn-sm" href="contact.html" data-en="Contact">문의하기</a>
+  </div>
+</header>
+
+<main>
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-info">
+      <div class="kicker">Contact</div>
+      <h2 data-en="Get in touch">문의하기</h2>
+      <p data-en="PoC, demo, adoption, and partnerships all start here. We reply within two business days.">PoC, 데모, 도입 상담, 파트너십 모두 이 창구로 시작합니다. 남겨주신 내용은 담당자가 확인 후 영업일 기준 2일 이내에 회신드립니다.</p>
+      <dl>
+        <dt data-en="Email">이메일</dt>
+        <dd><a href="mailto:thispatch.sec@gmail.com">thispatch.sec@gmail.com</a></dd>
+        <dt data-en="Hours">운영 시간</dt>
+        <dd data-en="Weekdays 10:00 – 18:00 (KST)">평일 10:00 – 18:00 (KST)</dd>
+      </dl>
+    </div>
+
+    <!-- 폼 전송: 현재는 화면 내 접수 완료 처리만 수행합니다.
+         실제 서비스 시 submit 핸들러에서 백엔드 엔드포인트(예: POST /api/contact)로 연동하세요. -->
+    <form class="cform" id="contactForm" novalidate>
+      <div class="f-grid">
+        <div class="field">
+          <label for="f-type"><span data-en="Inquiry type">문의 유형</span><span class="req"> *</span></label>
+          <select id="f-type" name="type" required>
+            <option value="">선택</option>
+            <option>일반 문의</option>
+            <option>PoC 신청</option>
+            <option>제품 데모/트라이얼 요청</option>
+            <option>파트너십 및 비즈니스</option>
+            <option>미디어</option>
+            <option>기타</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-country"><span data-en="Country">국가</span><span class="req"> *</span></label>
+          <select id="f-country" name="country" required>
+            <option value="">선택</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-company"><span data-en="Company / Org">회사/기관명</span><span class="req"> *</span></label>
+          <input id="f-company" name="company" type="text" required>
+        </div>
+        <div class="field">
+          <label for="f-name"><span data-en="Name">성명</span><span class="req"> *</span></label>
+          <input id="f-name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="f-title"><span data-en="Title">직급</span><span class="req"> *</span></label>
+          <input id="f-title" name="title" type="text" required>
+        </div>
+        <div class="field">
+          <label for="f-email"><span data-en="Email">이메일</span><span class="req"> *</span></label>
+          <input id="f-email" name="email" type="email" placeholder="name@company.com" required>
+        </div>
+        <div class="field">
+          <label for="f-phone"><span data-en="Phone">전화번호</span><span class="req"> *</span></label>
+          <input id="f-phone" name="phone" type="tel" placeholder="010-0000-0000" required>
+        </div>
+        <div class="field">
+          <label for="f-route"><span data-en="How did you hear about us">방문경로</span><span class="req"> *</span></label>
+          <select id="f-route" name="route" required>
+            <option value="">선택</option>
+            <option>구글 검색</option>
+            <option>네이버 검색</option>
+            <option>온라인 광고 (배너, 영상 등)</option>
+            <option>SNS (페이스북, 링크드인, 미디엄, 트위터 등)</option>
+            <option>온라인 행사 (웨비나, 강연 등)</option>
+            <option>오프라인 행사 (전시회, 컨퍼런스 등)</option>
+            <option>언론보도</option>
+            <option>논문/학술지</option>
+            <option>커뮤니티 (github 등)</option>
+            <option>지인/사내 추천</option>
+            <option>기타</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-msg"><span data-en="Tell us more about your inquiry.">문의사항에 대해 자세히 작성해 주세요.</span><span class="req"> *</span></label>
+          <textarea id="f-msg" name="message" required></textarea>
+        </div>
+
+        <div class="consent">
+          <label class="c-all"><input type="checkbox" id="agreeAll"> <span data-en="Agree to all">전체 동의</span></label>
+          <label class="c-row">
+            <input type="checkbox" class="agree" id="agreeTerms" required>
+            <span data-en="[Required] Terms of Service">[필수] 이용약관 동의</span>
+            <a class="viewall" href="terms.html" target="_blank" rel="noopener">View all</a>
+          </label>
+          <label class="c-row">
+            <input type="checkbox" class="agree" id="agreePrivacy" required>
+            <span data-en="[Required] Collection & use of personal data">[필수] 개인정보 수집 및 이용 동의</span>
+            <a class="viewall" href="privacy.html" target="_blank" rel="noopener">View all</a>
+          </label>
+          <label class="c-row">
+            <input type="checkbox" class="agree" id="agreeMkt">
+            <span data-en="[Optional] Marketing use of personal data">[선택] 마케팅 목적 개인정보 수집 이용 동의</span>
+            <a class="viewall" href="marketing.html" target="_blank" rel="noopener">View all</a>
+          </label>
+        </div>
+
+        <div class="submit-row"><button class="btn btn-solid" type="submit" data-en="Submit">제출하기</button></div>
+        <p class="form-foot" data-en="Your information is used only to handle and respond to your inquiry. See each View all for details.">입력하신 개인정보는 문의 확인과 응대 목적으로만 이용됩니다. 자세한 내용은 각 동의 항목의 View all에서 확인하실 수 있습니다.</p>
+      </div>
+    </form>
+
+    <div class="form-success" id="formSuccess" role="status">
+      <h3 data-en="Your inquiry has been received.">문의가 접수되었습니다.</h3>
+      <p data-en="We'll get back to you within two business days.">남겨주신 연락처로 영업일 기준 2일 이내에 담당자가 회신드리겠습니다.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/logo-hechi.png" alt="Hechi" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+          <span class="mark" aria-hidden="true" style="display:none"></span>
+          <strong>Hechi</strong>
+        </a>
+        <p data-en="A runtime security solution that detects and blocks supply-chain attacks at install and execution time.">공급망 공격을 설치·실행 시점에 탐지하고 차단하는 런타임 보안 솔루션입니다.</p>
+      </div>
+      <div class="f-cols">
+        <div>
+          <h4 data-en="Solution">솔루션</h4>
+          <a href="index.html#solution" data-en="Overview">솔루션 소개</a>
+          <a href="index.html#support" data-en="Supported environments">지원 환경</a>
+          <a href="index.html#product" data-en="Product & features">제품·기능</a>
+          <a href="index.html#demo" data-en="Demo">데모 영상</a>
+        </div>
+        <div>
+          <h4 data-en="Contact">Contact</h4>
+          <a href="contact.html" data-en="Contact us">문의하기</a>
+          <a href="mailto:thispatch.sec@gmail.com">thispatch.sec@gmail.com</a>
+        </div>
+        <div>
+          <h4 data-en="Legal">법적 고지</h4>
+          <a href="terms.html" target="_blank" rel="noopener" data-en="Terms of Service">이용약관</a>
+          <a href="privacy.html" target="_blank" rel="noopener" data-en="Privacy">개인정보 수집·이용</a>
+          <a href="marketing.html" target="_blank" rel="noopener" data-en="Marketing consent">마케팅 정보 수신 동의</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 Hechi. All rights reserved.</span>
+      <span><a href="mailto:thispatch.sec@gmail.com">thispatch.sec@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- 국가 목록 ----------
+var COUNTRIES = ["가나","가봉","가이아나","감비아","건지 섬","과들루프","과테말라","괌","그레나다","그리스","그린란드","기니","기니비사우","나미비아","나우루","나이지리아","남극","남수단","남아프리카공화국","네덜란드","네덜란드령 안틸레스","네팔","노르웨이","노퍽 섬","누벨칼레도니","뉴질랜드","니우에","니제르","니카라과","대만","대한민국","덴마크","도미니카공화국","도미니카연방","독일","동티모르","라오스","라이베리아","라트비아","러시아","레바논","레소토","레위니옹","루마니아","룩셈부르크","르완다","리비아","리투아니아","리히텐슈타인","마다가스카르","마셜제도","마요트","마이크로네시아연방","마카오","마케도니아 공화국","말라위","말레이시아","말리","맨 섬","멕시코","모나코","모로코","모리셔스","모리타니아","모잠비크","몬테네그로","몬트세랫","몰도바","몰디브","몰타","몽골","미국","미국령 군소 제도","미국령 버진아일랜드","미얀마","미크로네시아 연방","바누아투","바레인","바베이도스","바티칸 시국","바하마","방글라데시","버뮤다","베냉","베네수엘라","베트남","벨기에","벨라루스","벨리즈","보스니아헤르체고비나","보츠와나","볼리비아","부룬디","부르키나파소","부베 섬","부탄","북마리아나 제도","북마케도니아","북한","불가리아","브라질","브루나이","사모아","사우디아라비아","사우스조지아 사우스샌드위치 제도","사이프러스","산마리노","상투메프린시페","생피에르 미클롱","서사하라","세네갈","세르비아","세이셸","세인트 루시아","세인트 빈센트 그레나딘","세인트 키츠 네비스","세인트헬레나","소말리아","솔로몬제도","수단","수리남","스리랑카","스발바르 얀마옌","스웨덴","스위스","스페인","슬로바키아","슬로베니아","시리아","시에라리온","싱가포르","아랍에미리트","아루바","아르메니아","아르헨티나","아메리칸사모아","아이슬란드","아이티","아일랜드","아제르바이잔","아프가니스탄","안도라","알바니아","알제리","앙골라","앤티가바부다","앵귈라","에리트레아","에스와티니","에스토니아","에콰도르","에티오피아","엘살바도르","영국","영국령 버진아일랜드","영국령 인도양 지역","예멘","오만","오스트리아","온두라스","올란드 제도","왈리스 퓌튀나","요르단","우간다","우루과이","우즈베키스탄","우크라이나","이라크","이란","이스라엘","이집트","이탈리아","인도","인도네시아","일본","자메이카","잠비아","저지 섬","적도기니","조지아","중국","중앙아프리카공화국","지부티","지브롤터","짐바브웨","차드","체코","칠레","카메룬","카보베르데","카자흐스탄","카타르","캄보디아","캐나다","케냐","케이맨 제도","코모로","코소보","코스타리카","코코스 제도","코트디부아르","콜롬비아","콩고공화국","콩고민주공화국(DR콩고)","쿠바","쿠웨이트","쿡 제도","크로아티아","크리스마스 섬","키르기스스탄","키리바시","키프로스","타지키스탄","탄자니아","태국","터크스 케이커스 제도","터키 공화국","토고","토켈라우","통가","투르크메니스탄","투발루","튀니지","트리니다드토바고","파나마","파라과이","파키스탄","파푸아뉴기니","팔라우","팔레스타인","페로 제도","페루","포르투갈","포클랜드 제도","폴란드","푸에르토리코","프랑스","프랑스령 기아나","프랑스령 남부와 남극 지역","프랑스령 폴리네시아","피지","핀란드","필리핀","핏케언 제도","허드 맥도널드 제도","헝가리","호주","홍콩"];
+(function(){
+  var sel = document.getElementById("f-country");
+  COUNTRIES.forEach(function(c){
+    var o = document.createElement("option");
+    o.textContent = c; o.value = c;
+    sel.appendChild(o);
+  });
+})();
+
+// ---------- 전체 동의 ----------
+var agreeAll = document.getElementById("agreeAll");
+var agreeItems = Array.prototype.slice.call(document.querySelectorAll(".agree, #agreeMkt"));
+agreeAll.addEventListener("change", function(){
+  agreeItems.forEach(function(cb){ cb.checked = agreeAll.checked; });
+});
+agreeItems.forEach(function(cb){
+  cb.addEventListener("change", function(){
+    agreeAll.checked = agreeItems.every(function(i){ return i.checked; });
+  });
+});
+
+// ---------- 제출 처리 ----------
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var form = e.target;
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  form.style.display = "none";
+  var ok = document.getElementById("formSuccess");
+  ok.style.display = "block";
+  ok.scrollIntoView({ block: "center" });
+});
+
+// ---------- 한/영 언어 전환 ----------
+(function(){
+  var codeEl = document.querySelector(".lang-code");
+  function applyLang(lang){
+    var isEn = lang === "en";
+    document.documentElement.setAttribute("data-lang", lang);
+    document.documentElement.setAttribute("lang", lang);
+    document.querySelectorAll("[data-en]").forEach(function(el){
+      if(!el.hasAttribute("data-ko")) el.setAttribute("data-ko", el.textContent);
+      el.textContent = isEn ? el.getAttribute("data-en") : el.getAttribute("data-ko");
+    });
+    if(codeEl) codeEl.textContent = isEn ? "EN" : "KO";
+    try{ localStorage.setItem("thispatch-lang", lang); }catch(e){}
+  }
+  var saved = "ko";
+  try{ saved = localStorage.getItem("thispatch-lang") || "ko"; }catch(e){}
+  applyLang(saved);
+  var t = document.getElementById("langToggle");
+  if(t) t.addEventListener("click", function(){
+    var cur = document.documentElement.getAttribute("data-lang") || "ko";
+    applyLang(cur === "ko" ? "en" : "ko");
+  });
+})();
+</script>
+</body>
+</html>
