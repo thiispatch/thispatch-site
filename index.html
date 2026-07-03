@@ -91,14 +91,15 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .cols h3{font-size:19px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
 .cols p{font-size:15.5px;line-height:1.7;color:var(--body)}
 
-/* 지원 환경 (로고 월) */
-.envs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:24px 54px;margin-top:44px}
-.env{display:flex;align-items:center;gap:12px}
-.env img{width:36px;height:36px;object-fit:contain;filter:grayscale(1);opacity:.7;transition:filter .2s,opacity .2s}
-.env b{font-size:19px;font-weight:600;color:#6E7580;letter-spacing:-0.01em;transition:color .2s}
-.env:hover img{filter:none;opacity:1}
-.env:hover b{color:var(--ink)}
-.envs-more{text-align:center;margin-top:30px;font-size:14.5px;color:var(--mut)}
+/* 지원 환경 (로고 그리드) */
+.envs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.env{display:flex;align-items:center;gap:15px;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.env:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.env img{width:38px;height:38px;object-fit:contain;flex-shrink:0}
+.env-t b{display:block;font-size:16.5px;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
+.env-t span{display:block;font-size:13px;color:var(--mut);margin-top:2px}
+.env.more{align-items:center;justify-content:center;text-align:center;color:var(--mut);font-weight:600;font-size:15px;background:transparent;box-shadow:none;border-style:dashed;border-color:var(--line-strong)}
+.env.more:hover{transform:none;box-shadow:none}
 
 /* 가치 + 기능 (교차) */
 #product{background:var(--wash)}
@@ -151,6 +152,7 @@ footer .wrap{padding:56px 24px 32px}
 @media (max-width:980px){
   .hero .wrap{grid-template-columns:1fr;gap:36px}
   .cols{grid-template-columns:1fr}
+  .envs{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
   .feature{grid-template-columns:1fr;gap:28px;margin-top:56px}
@@ -166,7 +168,7 @@ footer .wrap{padding:56px 24px 32px}
   .lang-toggle .lang-code{display:none}
   .cta .wrap{gap:24px}
   .cta-action{align-items:stretch;width:100%}
-  .envs{gap:18px 30px}
+  .envs{grid-template-columns:1fr}
 }
 @media (max-width:420px){
   h1{font-size:29px}
@@ -258,14 +260,32 @@ footer .wrap{padding:56px 24px 32px}
     </div>
     <!-- TODO: 실제 지원 환경 목록으로 확정 -->
     <div class="envs">
-      <div class="env"><img src="assets/logos/amazon_aws.svg" alt="AWS EC2" loading="lazy"><b>AWS EC2</b></div>
-      <div class="env"><img src="assets/logos/jenkins.svg" alt="Jenkins" loading="lazy"><b>Jenkins</b></div>
-      <div class="env"><img src="assets/logos/githubactions.svg" alt="GitHub Actions" loading="lazy"><b>GitHub Actions</b></div>
-      <div class="env"><img src="assets/logos/gitlab.svg" alt="GitLab" loading="lazy"><b>GitLab</b></div>
-      <div class="env"><img src="assets/logos/docker.svg" alt="Docker" loading="lazy"><b>Docker</b></div>
-      <div class="env"><img src="assets/logos/kubernetes.svg" alt="Kubernetes" loading="lazy"><b>Kubernetes</b></div>
+      <div class="env">
+        <img src="assets/logos/amazon_aws.svg" alt="AWS EC2" loading="lazy">
+        <div class="env-t"><b>AWS EC2</b><span data-en="Cloud instances">클라우드 인스턴스</span></div>
+      </div>
+      <div class="env">
+        <img src="assets/logos/jenkins.svg" alt="Jenkins" loading="lazy">
+        <div class="env-t"><b>Jenkins</b><span data-en="CI server">CI 서버</span></div>
+      </div>
+      <div class="env">
+        <img src="assets/logos/githubactions.svg" alt="GitHub Actions" loading="lazy">
+        <div class="env-t"><b>GitHub Actions</b><span>self-hosted runner</span></div>
+      </div>
+      <div class="env">
+        <img src="assets/logos/gitlab.svg" alt="GitLab" loading="lazy">
+        <div class="env-t"><b>GitLab</b><span>GitLab Runner</span></div>
+      </div>
+      <div class="env">
+        <img src="assets/logos/docker.svg" alt="Docker" loading="lazy">
+        <div class="env-t"><b>Docker</b><span data-en="Image builds">이미지 빌드</span></div>
+      </div>
+      <div class="env">
+        <img src="assets/logos/kubernetes.svg" alt="Kubernetes" loading="lazy">
+        <div class="env-t"><b>Kubernetes</b><span data-en="Clusters">클러스터</span></div>
+      </div>
+      <div class="env more" data-en="and many more environments">그 외 다양한 환경</div>
     </div>
-    <p class="envs-more" data-en="…and many more build &amp; runtime environments">그 외 다양한 빌드·런타임 환경에서 동작합니다</p>
   </div>
 </section>
 
