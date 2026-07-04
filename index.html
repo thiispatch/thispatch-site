@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ThisPatch — 소프트웨어 공급망 런타임 보안</title>
-<meta name="description" content="ThisPatch는 개발자가 설치·실행하는 패키지의 행위를 지켜보며 공급망 공격을 예방·탐지·대응합니다. 새로운 인프라 없이, 에이전트 하나로 시작하세요.">
+<meta name="description" content="ThisPatch는 개발자가 설치·실행하는 패키지를 지켜보며 공급망 공격으로부터 팀을 보호하는 런타임 보안 회사입니다. 새로운 인프라 없이, 에이전트 하나로 시작하세요.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='16' fill='%23C4202A'/%3E%3Crect y='16' width='32' height='16' fill='%232B5FC4'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <style>
@@ -72,55 +72,37 @@ h2{font-size:clamp(27px,3.3vw,37px);font-weight:700;line-height:1.28;letter-spac
 .hero .lead{font-size:17px;line-height:1.72;max-width:50ch}
 .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
 
-/* 히어로 우측 제품 카드 */
-.hero-card{position:relative;overflow:hidden;background:linear-gradient(150deg,#1B2740 0%,#0E1626 100%);border-radius:20px;padding:38px 34px;color:#fff;box-shadow:var(--shadow-lg)}
-.hc-emblem{height:86px;width:auto;filter:brightness(0) invert(1);margin-bottom:20px}
-.hc-name{font-size:22px;font-weight:800;letter-spacing:-0.01em}
-.hc-tag{font-size:14px;color:rgba(255,255,255,.66);margin-top:5px}
-.hc-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:15px;position:relative;z-index:1}
-.hc-list li{display:flex;align-items:center;gap:12px;font-size:15px;color:rgba(255,255,255,.9)}
-.hc-list li svg{width:20px;height:20px;color:#7FA8F0;flex-shrink:0}
-.hc-wm{position:absolute;right:-46px;bottom:-46px;height:210px;width:auto;opacity:.06;filter:brightness(0) invert(1);pointer-events:none}
+/* 히어로 우측 제품 카드 (홈 유일의 제품 역량 노출) */
+.hero-card{position:relative;overflow:hidden;background:linear-gradient(150deg,#1B2740 0%,#0E1626 100%);border-radius:20px;padding:36px 32px;color:#fff;box-shadow:var(--shadow-lg)}
+.hc-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.hc-emblem{height:52px;width:auto;filter:brightness(0) invert(1)}
+.hc-name{font-size:21px;font-weight:800;letter-spacing:-0.01em}
+.hc-tag{font-size:13.5px;color:rgba(255,255,255,.62);margin-top:2px}
+.hc-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:1}
+.hc-list li{display:flex;gap:12px;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88)}
+.hc-list li svg{width:19px;height:19px;color:#7FA8F0;flex-shrink:0;margin-top:1px}
+.hc-list b{color:#fff;font-weight:700}
+.hc-more{display:inline-flex;align-items:center;gap:6px;margin-top:26px;font-size:14px;font-weight:700;color:#9DBBF2;text-decoration:none;position:relative;z-index:1}
+.hc-more:hover{color:#fff}
+.hc-wm{position:absolute;right:-46px;bottom:-46px;height:200px;width:auto;opacity:.06;filter:brightness(0) invert(1);pointer-events:none}
 
-/* 문제 (혜택형, 간결) */
+/* 회사 정체성 (stmt) */
 .stmt{max-width:820px;margin:0 auto;text-align:center}
-.stmt .lead{margin:20px auto 0;max-width:56ch}
+.stmt .lead{margin:20px auto 0;max-width:58ch}
 
-/* 제품 3필러 */
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
-.pcard{padding:32px 28px;background:#fff;border:1px solid var(--line-strong);border-radius:14px;box-shadow:var(--shadow)}
-.picon{width:48px;height:48px;border-radius:12px;background:var(--wash);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.picon svg{width:24px;height:24px;color:var(--accent)}
-.pcard.hot .picon{background:#FBEAEA}
-.pcard.hot .picon svg{color:var(--danger)}
-.pcard h3{font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
-.pcard p{font-size:15.5px;line-height:1.7;color:var(--body)}
-
-/* 차별성 */
-.diffs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
-.dcard{padding:30px 26px;background:#fff;border:1px solid var(--line);border-radius:14px}
-.dnum{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.06em;margin-bottom:14px}
-.dcard h3{font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:9px}
-.dcard p{font-size:15px;line-height:1.7;color:var(--body)}
-
-/* 도입 3단계 */
-.steps{display:flex;align-items:stretch;gap:14px;margin-top:56px}
-.step{flex:1;padding:28px 26px;background:var(--wash);border:1px solid var(--line);border-radius:12px}
-.sno{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.06em;margin-bottom:12px}
-.step h3{font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
-.step p{font-size:15px;line-height:1.65;color:var(--body)}
-.step-arrow{display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);opacity:.5}
-.step-arrow svg{width:26px;height:26px}
-
-/* 회사 소개 */
-.company .wrap{max-width:860px;text-align:center}
-.company .lead{margin:20px auto 0;max-width:58ch}
-.company-actions{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+/* 정직한 현황 (성숙도 계약) */
+.status{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;text-align:left}
+.scard{padding:26px;background:#fff;border:1px solid var(--line-strong);border-radius:12px}
+.slabel{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;color:var(--accent);letter-spacing:.01em;margin-bottom:11px}
+.slabel svg{width:18px;height:18px;flex-shrink:0}
+.scard p{font-size:15.5px;line-height:1.65;color:var(--body)}
+.scard.muted{background:var(--wash)}
+.scard.muted .slabel{color:var(--mut)}
 
 /* 문의 CTA 밴드 */
 .cta{background:linear-gradient(135deg,#CB2A2A 0%,#A31C24 100%);color:#fff}
 .cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.cta-text h2{color:#fff;max-width:22ch}
+.cta-text h2{color:#fff;max-width:24ch}
 .cta-text p{margin-top:12px;color:rgba(255,255,255,.88);font-size:17px}
 .cta-action{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 .cta .btn-solid{background:#fff;color:var(--danger-deep)}
@@ -145,9 +127,6 @@ footer .wrap{padding:56px 24px 32px}
 /* 반응형 */
 @media (max-width:980px){
   .hero .wrap{grid-template-columns:1fr;gap:40px}
-  .pillars,.diffs{grid-template-columns:1fr}
-  .steps{flex-direction:column}
-  .step-arrow{transform:rotate(90deg);margin:2px 0}
 }
 @media (max-width:640px){
   section{padding:72px 0}
@@ -155,6 +134,7 @@ footer .wrap{padding:56px 24px 32px}
   .topbar{padding:0 16px}
   .nav{display:none}
   .lang-toggle .lang-code{display:none}
+  .status{grid-template-columns:1fr}
   .cta .wrap{gap:24px}
   .cta-action{align-items:stretch;width:100%}
   .hero-card{padding:30px 26px}
@@ -170,11 +150,10 @@ footer .wrap{padding:56px 24px 32px}
     <strong>ThisPatch</strong>
   </a>
   <nav class="nav" aria-label="주요 메뉴">
-    <a class="nav-link" href="#product" data-en="Product">제품</a>
-    <a class="nav-link" href="#why" data-en="Why us">차별점</a>
-    <a class="nav-link" href="#how" data-en="How it works">도입</a>
-    <a class="nav-link" href="#company" data-en="Company">회사 소개</a>
+    <a class="nav-link" href="#about" data-en="Company">회사 소개</a>
+    <a class="nav-link" href="#status" data-en="Where we are">지금의 ThisPatch</a>
     <a class="nav-link" href="solution.html" data-en="Solution">솔루션 상세</a>
+    <a class="nav-link" href="contact.html" data-en="Contact">문의</a>
   </nav>
   <div class="nav-actions">
     <button class="lang-toggle" id="langToggle" type="button" aria-label="언어 변경 / Change language">
@@ -196,130 +175,66 @@ footer .wrap{padding:56px 24px 32px}
         <span class="only-ko">설치하는 순간부터,<br><em>공급망 공격</em>을 막습니다</span>
         <span class="only-en">Stop <em>supply-chain attacks</em><br>from the moment of install</span>
       </h1>
-      <p class="lead" data-en="ThisPatch watches how the packages your developers install and run actually behave — preventing, detecting, and responding to supply-chain attacks that hide in plain sight.<br>No new infrastructure. Just one agent.">ThisPatch는 개발자가 설치하고 실행하는 패키지의 행위를 지켜보며, 정상인 척 숨어든 악성 공급망 공격을 예방·탐지·대응합니다.<br>새로운 인프라 없이, 에이전트 하나로 시작하세요.</p>
+      <p class="lead" data-en="ThisPatch watches how the packages your developers install and run behave, protecting your team from supply-chain attacks.<br>No new infrastructure. Just one agent.">ThisPatch는 개발자가 설치하고 실행하는 패키지의 움직임을 지켜보며, 공급망 공격으로부터 팀을 보호합니다.<br>새로운 인프라 없이, 에이전트 하나로 시작하세요.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="contact.html"><span data-en="Book a demo">데모 요청</span> <span aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" href="solution.html" data-en="See the solution">솔루션 살펴보기</a>
+        <a class="btn btn-solid" href="solution.html"><span data-en="Explore the solution">솔루션 살펴보기</span> <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="contact.html" data-en="Book a demo">데모 요청</a>
       </div>
     </div>
     <div class="hero-card">
-      <img class="hc-emblem" src="assets/hechi-emblem.png" alt="Hechi" onerror="this.style.display='none'">
-      <div class="hc-name">Hechi</div>
-      <div class="hc-tag" data-en="Our runtime supply-chain security product">ThisPatch의 런타임 공급망 보안 제품</div>
+      <div class="hc-top">
+        <img class="hc-emblem" src="assets/hechi-emblem.png" alt="Hechi" onerror="this.style.display='none'">
+        <div>
+          <div class="hc-name">Hechi</div>
+          <div class="hc-tag" data-en="Our runtime supply-chain security product">ThisPatch의 런타임 공급망 보안 제품</div>
+        </div>
+      </div>
       <ul class="hc-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Block known threats before install">알려진 위협은 설치 전에 차단</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Detect novel threats at runtime">새로운 위협은 실행 중 행위로 탐지</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="Respond instantly with auto reports">자동 리포트로 즉시 대응</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="&lt;b&gt;Prevent&lt;/b&gt; — block known malicious packages before install"><b>예방</b> — 알려진 악성 패키지는 설치 전에 차단</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="&lt;b&gt;Detect&lt;/b&gt; — catch hidden, novel threats while they run"><b>탐지</b> — 숨어든 새 위협은 실행 중에 탐지</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-en="&lt;b&gt;Respond&lt;/b&gt; — get an automatic report of what happened"><b>대응</b> — 무슨 일인지 자동 리포트로 정리</span></li>
       </ul>
+      <a class="hc-more" href="solution.html"><span data-en="See how Hechi works">솔루션 자세히 보기</span> <span aria-hidden="true">→</span></a>
       <img class="hc-wm" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
     </div>
   </div>
 </section>
 
-<!-- ============ 문제 (간결) ============ -->
-<section id="problem" class="bg-wash">
+<!-- ============ 회사 정체성 ============ -->
+<section id="about" class="bg-wash">
   <div class="wrap">
     <div class="stmt">
-      <div class="kicker" data-en="Why runtime">왜 런타임인가</div>
-      <h2 data-en="A name and a reputation aren't enough to stop it.">이름과 평판만으로는, 막을 수 없습니다.</h2>
-      <p class="lead" data-en="Malicious packages install just like normal ones and only show their true colors the moment they run. Pre-install scans and reputation scores miss threats like these all too easily.">악성 패키지는 정상 패키지처럼 설치되고, 실행되는 순간에야 본색을 드러냅니다. 설치 전 검사나 평판 점수만으로는 이런 위협을 놓치기 쉽습니다.</p>
+      <div class="kicker" data-en="About ThisPatch">회사 소개</div>
+      <h2 data-en="ThisPatch keeps the software supply chain honest — at runtime.">ThisPatch는 소프트웨어 공급망을 런타임에서 지킵니다.</h2>
+      <p class="lead" data-en="We believe the open source developers trust and install every day should never betray that trust. ThisPatch is the company that turns that belief into a product.">우리는 개발자가 매일 신뢰하고 설치하는 오픈소스가 그 신뢰를 배신해서는 안 된다고 믿습니다. ThisPatch는 그 믿음을 제품으로 만드는 회사입니다.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ 제품 (혜택 3필러) ============ -->
-<section id="product">
+<!-- ============ 정직한 현황 (성숙도 계약) ============ -->
+<section id="status">
   <div class="wrap">
     <div class="sec-head">
-      <div class="kicker" data-en="What Hechi does">무엇을 하나요</div>
-      <h2 data-en="Three layers of defense, judged by behavior.">행위로 판단하는 3단계 방어.</h2>
-      <p class="lead" data-en="Prevent what's known, detect what's new, and respond in one place — all from how packages actually behave.">알려진 것은 막고, 새로운 것은 잡아내고, 대응까지 한곳에서 — 모두 패키지의 실제 행위를 기준으로.</p>
+      <div class="kicker" data-en="Where we are">지금의 ThisPatch</div>
+      <h2 data-en="Early stage — so we keep it honest.">초기 단계입니다. 그래서 더 정직하게 말합니다.</h2>
     </div>
-    <div class="pillars">
-      <div class="pcard">
-        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3 data-en="Prevent">예방</h3>
-        <p data-en="Block known malicious packages before they ever install.">알려진 악성 패키지는 설치되기 전에 차단합니다.</p>
+    <div class="status">
+      <div class="scard">
+        <div class="slabel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg><span data-en="Who we are">우리는</span></div>
+        <p data-en="An early-stage team building runtime supply-chain security.">런타임 공급망 보안을 만드는 초기 단계 팀입니다.</p>
       </div>
-      <div class="pcard hot">
-        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3 data-en="Detect">탐지</h3>
-        <p data-en="Catch novel threats that look normal — by how they actually behave at runtime.">정상인 척 숨어든 새로운 위협도, 실행 중 실제 행위로 잡아냅니다.</p>
+      <div class="scard">
+        <div class="slabel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span data-en="What exists now">지금 있는 것</span></div>
+        <p data-en="Our product Hechi — available today as a pilot and a demo on request.">제품 Hechi — 현재 파일럿과 요청 시 데모로 만나보실 수 있습니다.</p>
       </div>
-      <div class="pcard">
-        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h2"/></svg></div>
-        <h3 data-en="Respond">대응</h3>
-        <p data-en="Respond right away with a report that lays out exactly what happened.">무슨 일이 일어났는지 자동으로 정리된 리포트로 즉시 대응합니다.</p>
+      <div class="scard muted">
+        <div class="slabel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span data-en="What we don't claim yet">아직 말하지 않는 것</span></div>
+        <p data-en="No public customer logos, awards, or big numbers yet. We only say what actually works.">공개 고객사·수상·대규모 실적은 아직 내세우지 않습니다. 되는 것만 정직하게 말합니다.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 차별성 ============ -->
-<section id="why" class="bg-wash">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker" data-en="Why ThisPatch">왜 ThisPatch인가</div>
-      <h2 data-en="We cover what other tools miss.">다른 도구가 놓치는 지점을 지킵니다.</h2>
-    </div>
-    <div class="diffs">
-      <div class="dcard">
-        <div class="dnum">01</div>
-        <h3 data-en="Behavior, not just a scan">스캔이 아닌, 실제 행위</h3>
-        <p data-en="Threats that a pre-install code scan can't see, we catch from how they actually run.">코드를 미리 훑는 검사가 놓치는 위협을, 실제로 실행되는 행위에서 잡아냅니다.</p>
+      <div class="scard">
+        <div class="slabel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><span data-en="Who should reach out">함께하면 좋은 분</span></div>
+        <p data-en="Teams that want to pilot and validate supply-chain security with us.">공급망 보안을 직접 파일럿하고 함께 검증해 볼 팀을 찾습니다.</p>
       </div>
-      <div class="dcard">
-        <div class="dnum">02</div>
-        <h3 data-en="No new infrastructure">새 인프라가 필요 없음</h3>
-        <p data-en="Get started with a single agent, and validate safely in monitor mode first — no complex build-out.">복잡한 구축 없이 에이전트 하나로 도입하고, 관찰 모드로 먼저 안전하게 검증합니다.</p>
-      </div>
-      <div class="dcard">
-        <div class="dnum">03</div>
-        <h3 data-en="Fits your dev workflow">개발 흐름에 그대로</h3>
-        <p data-en="It sits right in the flow of installing and running packages, so it never slows your team down.">패키지를 설치하고 실행하는 흐름에 그대로 붙어, 팀의 속도를 늦추지 않습니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 도입 3단계 ============ -->
-<section id="how">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="kicker" data-en="How to get started">도입은 이렇게</div>
-      <h2 data-en="Up and running in three steps.">3단계면 충분합니다.</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="sno">STEP 01</div>
-        <h3 data-en="Install the agent">에이전트 설치</h3>
-        <p data-en="Roll out the agent across your team's environment.">팀 환경에 에이전트를 설치합니다.</p>
-      </div>
-      <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
-      <div class="step">
-        <div class="sno">STEP 02</div>
-        <h3 data-en="Set your policy">정책 설정</h3>
-        <p data-en="Configure your blocking policy and validate safely in monitor mode first.">차단 정책을 설정하고, 관찰 모드로 먼저 안전하게 검증합니다.</p>
-      </div>
-      <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
-      <div class="step">
-        <div class="sno">STEP 03</div>
-        <h3 data-en="Watch & respond">확인과 대응</h3>
-        <p data-en="Review threats and start first response with automatic reports.">위협을 확인하고 자동 리포트로 초동대응을 시작합니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 회사 소개 ============ -->
-<section id="company" class="bg-wash">
-  <div class="wrap">
-    <div class="kicker" data-en="About">회사 소개</div>
-    <h2 data-en="ThisPatch secures the software supply chain at runtime.">ThisPatch는 공급망을 런타임에서 지킵니다.</h2>
-    <p class="lead" data-en="We're a team focused on software supply-chain security. We build Hechi so that the open source developers trust and install every day never betrays that trust.">우리는 소프트웨어 공급망 보안에 집중하는 팀입니다. 개발자가 매일 신뢰하고 설치하는 오픈소스가 그 신뢰를 배신하지 않도록, Hechi를 만듭니다.</p>
-    <div class="company-actions">
-      <a class="btn btn-solid" href="contact.html" data-en="Contact us">문의하기</a>
-      <a class="btn btn-ghost" href="solution.html" data-en="Explore the solution">솔루션 자세히 보기</a>
     </div>
   </div>
 </section>
@@ -328,11 +243,11 @@ footer .wrap{padding:56px 24px 32px}
 <section class="cta">
   <div class="wrap">
     <div class="cta-text">
-      <h2 data-en="Bring your supply-chain security to runtime.">공급망 보안을 런타임으로 끌어올리세요.</h2>
-      <p data-en="See how ThisPatch protects your team — book a live demo.">ThisPatch가 어떻게 팀을 지키는지, 데모로 직접 확인해 보세요.</p>
+      <h2 data-en="Looking for teams to pilot supply-chain security with us.">도입 검토와 파일럿을 함께할 팀을 찾습니다.</h2>
+      <p data-en="Curious about ThisPatch, or want to talk supply-chain security? Reach out anytime.">ThisPatch가 궁금하거나 공급망 보안을 함께 고민하고 싶다면 언제든 연락 주세요.</p>
     </div>
     <div class="cta-action">
-      <a class="btn btn-solid" href="contact.html"><span data-en="Book a demo">데모 요청</span> <span aria-hidden="true">→</span></a>
+      <a class="btn btn-solid" href="contact.html"><span data-en="Contact us">문의하기</span> <span aria-hidden="true">→</span></a>
       <a class="cta-mail" href="mailto:thispatch.sec@gmail.com">thispatch.sec@gmail.com</a>
     </div>
   </div>
@@ -349,14 +264,13 @@ footer .wrap{padding:56px 24px 32px}
           <span class="mark" aria-hidden="true"></span>
           <strong>ThisPatch</strong>
         </a>
-        <p data-en="ThisPatch secures the software supply chain at runtime. Hechi prevents, detects, and responds to threats by their behavior at install and run time.">ThisPatch는 소프트웨어 공급망을 런타임에서 지킵니다. Hechi는 설치·실행 시점의 행위로 위협을 예방·탐지·대응합니다.</p>
+        <p data-en="ThisPatch secures the software supply chain at runtime. Our product Hechi protects teams from supply-chain attacks.">ThisPatch는 소프트웨어 공급망을 런타임에서 지킵니다. 제품 Hechi로 공급망 공격으로부터 팀을 보호합니다.</p>
       </div>
       <div class="f-cols">
         <div>
-          <h4 data-en="Product">제품</h4>
-          <a href="#product" data-en="What Hechi does">제품 기능</a>
-          <a href="#why" data-en="Why ThisPatch">차별점</a>
-          <a href="#how" data-en="How it works">도입</a>
+          <h4 data-en="Company">회사</h4>
+          <a href="#about" data-en="About">회사 소개</a>
+          <a href="#status" data-en="Where we are">지금의 ThisPatch</a>
           <a href="solution.html" data-en="Solution detail">솔루션 상세</a>
         </div>
         <div>
