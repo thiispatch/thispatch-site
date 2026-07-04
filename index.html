@@ -55,7 +55,7 @@ html:not([data-lang="en"]) .only-en{display:none}
 
 /* 섹션 공통 */
 section{padding:104px 0}
-.kicker{font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:14px}
+.kicker{font-size:16px;font-weight:700;color:var(--accent);margin-bottom:14px}
 h1{font-size:clamp(32px,4.2vw,51px);font-weight:800;line-height:1.18;letter-spacing:-0.035em}
 h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spacing:-0.03em}
 .lead{font-size:18px;line-height:1.75;color:var(--body);margin-top:18px;max-width:64ch}
@@ -85,13 +85,22 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .prob .pno{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:#FBEAEA;color:var(--danger);font-weight:800;font-size:14px;margin-bottom:16px}
 .prob h3{font-size:19px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px}
 .prob p{font-size:15.5px;line-height:1.75;color:var(--body)}
+.prob-flow{display:flex;align-items:stretch;gap:7px;margin-top:22px}
+.pf-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:13px 8px;background:var(--wash);border:1px solid var(--line-strong);border-radius:8px}
+.pf-node svg{width:20px;height:20px;color:var(--mut);flex-shrink:0}
+.pf-node span{font-size:12px;line-height:1.35;color:var(--body);font-weight:600}
+.pf-node.danger{background:#FBEAEA;border-color:#EBC9CB}
+.pf-node.danger svg{color:var(--danger)}
+.pf-node.danger span{color:var(--danger)}
+.pf-arrow{display:flex;align-items:center;color:var(--mut);opacity:.45;flex-shrink:0}
+.pf-arrow svg{width:15px;height:15px}
 .prob-conc{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:24px;margin-top:18px;padding:30px 32px;background:var(--dark);color:#fff;border-radius:10px}
 .prob-conc svg{width:28px;height:28px;color:#fff;flex-shrink:0}
 .prob-conc-lead{display:flex;align-items:center;gap:16px}
 .prob-conc-lead p{font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.9)}
 .prob-conc b{color:#fff;font-weight:800}
 .probsec .sec-seal{display:block;height:112px;width:auto;margin:0 auto 22px;object-fit:contain}
-.prob-origin{max-width:62ch;margin:16px auto 0;text-align:center;font-size:16px;line-height:1.75;color:var(--mut)}
+.prob-origin{margin:16px auto 0;text-align:center;font-size:16px;line-height:1.75;color:var(--mut)}
 .prob::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--danger)}
 .prob-divider{display:flex;align-items:center;gap:16px;margin:36px auto 0}
 .prob-divider::before,.prob-divider::after{content:"";flex:1;height:1px;background:var(--line-strong)}
@@ -111,7 +120,7 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .shift-arrow{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4)}
 .shift-arrow svg{width:24px;height:24px;color:inherit}
 .prob-conc .wm{position:absolute;right:-52px;top:50%;transform:translateY(-50%);height:220px;width:auto;opacity:.12;filter:brightness(0) invert(1);pointer-events:none;user-select:none;z-index:0}
-@media(max-width:640px){.probsec .sec-seal{height:88px;margin-bottom:16px}.prob-shift{grid-template-columns:1fr;gap:12px}.shift-arrow{transform:rotate(90deg)}}
+@media(max-width:640px){.probsec .sec-seal{height:88px;margin-bottom:16px}.prob-shift{grid-template-columns:1fr;gap:12px}.shift-arrow{transform:rotate(90deg)}.prob-flow{flex-direction:column;gap:9px}.pf-arrow{transform:rotate(90deg)}}
 @media(max-width:760px){.prob-conc .wm{display:none}}
 
 /* 솔루션 소개 (3카드) */
@@ -275,37 +284,50 @@ footer .wrap{padding:56px 24px 32px}
   <div class="wrap">
     <div class="sec-head">
       <img class="sec-seal" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
-      <div class="kicker" data-en="By essence, not by name">이름이 아니라, 본질로</div>
-      <h2 data-en="Threats slip in wearing a normal face — and there was no way to see their true nature.">정상인 척 숨어든 위협, 본질을 볼 방법이 없었습니다.</h2>
+      <h2 data-en="Threats slip in wearing a normal face — and there was no way to see their true nature.">정상인 척 숨어든 위협, 실체를 볼 방법이 없었습니다.</h2>
     </div>
-    <p class="prob-origin" data-en="Hechi (해치) is one of the old names for the Haetae (獬豸), a mythical creature of East Asian legend said to discern right from wrong and good from evil.">해치(Hechi)는 선악과 시비를 판단한다는 동아시아 전설 속 상상의 동물 해태(獬豸)의 옛 이름 중 하나입니다.</p>
+    <p class="prob-origin" data-en="Hechi (해치) is one of the old names for the Haetae (獬豸), a mythical creature said to discern right from wrong and good from evil.">해치(Hechi)는 선악과 시비를 판단한다는 상상의 동물 해태(獬豸)의 옛 이름 중 하나입니다.</p>
     <div class="probs">
       <div class="prob">
         <span class="pno">1</span>
-        <h3 data-en="A normal surface, a malicious essence.">겉은 정상, 본질은 악성입니다.</h3>
-        <p data-en="They ride in through a library or package manager and, inside install/run scripts (e.g. postinstall) and runtime processes, blend into normal operation — erasing logs, performing abnormal actions, and siphoning credentials out. By name and reputation alone, you cannot separate the malicious behavior mixed into normal operation.">라이브러리나 패키지 매니저를 타고 들어와, 설치·실행 스크립트(예: postinstall)와 런타임 프로세스 안에서 정상 동작에 섞여 로그를 지우고 이상 행위를 수행하며 크리덴셜을 외부로 빼돌립니다. 이름과 평판만 보아서는, 정상 동작에 섞인 악성 행위를 가려낼 수 없습니다.</p>
+        <h3 data-en="It blends into normal behavior — and erases the traces.">정상 행위에 섞여들고, 흔적까지 지웁니다.</h3>
+        <p data-en="They ride in through a library or package manager and, inside install/run scripts (e.g. postinstall) and runtime processes, blend into normal operation — erasing logs, performing abnormal actions, and siphoning credentials out. Each action on its own looks normal, so without the context that links them it can't be told apart — and with logs erased at runtime, it's hard to confirm even after the fact.">라이브러리나 패키지 매니저를 타고 들어와, 설치·실행 스크립트(예: postinstall)와 런타임 프로세스 안에서 정상 동작에 섞여 로그를 지우고 이상 행위를 수행하며 크리덴셜을 외부로 빼돌립니다. 하나하나의 동작은 정상이라 여러 행위를 잇는 맥락 없이는 가려낼 수 없고, 로그마저 런타임에 지워져 뒤늦게도 확인하기 어렵습니다.</p>
+        <div class="prob-flow" aria-hidden="true">
+          <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span data-en="Many normal actions">정상 행위 다수</span></div>
+          <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+          <div class="pf-node danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-en="One anomaly slipped in between">사이에 섞인 이상 행위</span></div>
+          <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+          <div class="pf-node danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span data-en="Logs erased, traces gone">로그 삭제로 흔적 제거</span></div>
+        </div>
       </div>
       <div class="prob">
         <span class="pno">2</span>
-        <h3 data-en="There was no means to see that essence.">그 본질을 볼 수단이 없었습니다.</h3>
-        <p data-en="Until now, most cases surfaced only after they made the news, by an accidental sighting, or through the attacker's own mistake. Existing commercial security tools struggle to observe this runtime behavior continuously at execution time, so it was usually caught only after the fact.">지금까지의 발견은 기사화되거나, 우연히 눈에 띄거나, 공격자의 실수로 드러나는 경우가 대부분이었습니다. 기존 상용 보안 도구로는 이런 런타임 행위를 실행 시점에 상시로 관측하기 어려워, 대개 이미 벌어진 뒤에야 알게 되는 구조였습니다.</p>
+        <h3 data-en="You couldn't predict it, or prevent it in time.">예측할 수도, 미리 막을 수도 없었습니다.</h3>
+        <p data-en="Even when credentials leak from a single package you trusted, you usually find out only after the damage lands — in the news, or as a bill. Existing commercial tools can't watch this behavior continuously at runtime, so neither prediction nor prevention was ever really within reach.">믿고 설치한 패키지 하나에서 크리덴셜이 새어 나가도, 대개는 기사화되거나 예상치 못한 청구서처럼 피해가 터진 뒤에야 알게 됩니다. 기존 상용 도구로는 실행 시점의 이런 행위를 상시로 관측하기 어려워, 예측도 예방도 손에 잡히지 않았습니다.</p>
+        <div class="prob-flow" aria-hidden="true">
+          <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span data-en="Installed in good faith">신뢰하고 설치</span></div>
+          <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+          <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span data-en="Runs normally, leaks quietly">정상처럼 동작·유출</span></div>
+          <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+          <div class="pf-node danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-en="Noticed only after it blows up">터진 뒤에야 인지</span></div>
+        </div>
       </div>
     </div>
     <div class="prob-divider" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 C 6 9, 6 15, 12 21 M12 3 C 18 9, 18 15, 12 21"/></svg></div>
     <div class="prob-conc">
       <div class="prob-conc-lead">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        <p data-en="&lt;b&gt;That is why Hechi exists.&lt;/b&gt; Like the Haetae, it judges by behavior, not by name."><b>그래서 Hechi입니다.</b> 해태처럼 이름이 아니라 행위로 본질을 판단합니다.</p>
+        <p data-en="&lt;b&gt;That is why Hechi exists.&lt;/b&gt; Like the Haetae, it judges by the actual behavior at runtime — not by a package's name or reputation."><b>그래서 Hechi입니다.</b> 해태처럼, 패키지의 이름·평판이 아니라 실행 시점의 실제 행위로 본질을 판단합니다.</p>
       </div>
       <div class="prob-shift">
         <div class="shift-item shift-old">
-          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span data-en="By name and reputation">이름·평판으로는</span></span>
-          <p data-en="A package that looks normal slips right through, and the malice hidden inside goes unseen.">정상으로 보이는 패키지는 그대로 통과되고, 숨어든 악성 행위는 보이지 않습니다.</p>
+          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span data-en="By static analysis">정적 분석으로는</span></span>
+          <p data-en="Vetting a package's name, reputation, or code before install lets anything that looks normal pass straight through.">이름·평판이나 코드를 설치 전에 훑는 것만으로는, 정상으로 보이는 패키지가 그대로 통과됩니다.</p>
         </div>
         <div class="shift-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
         <div class="shift-item shift-new">
-          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="By behavior and essence">행위·본질로는</span></span>
-          <p data-en="The real behavior at install and runtime reveals what a name never could.">설치·실행 시점의 실제 행위가, 이름만으로는 알 수 없던 본질을 드러냅니다.</p>
+          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="By runtime dynamic analysis">런타임 동적 분석으로는</span></span>
+          <p data-en="Only by observing and analyzing the actual behavior at install and runtime does the malice — invisible by name — come to light.">설치·실행 시점의 실제 행위를 런타임에서 관측·분석해야, 이름만으로는 알 수 없던 악성의 본질이 드러납니다.</p>
         </div>
       </div>
       <img class="wm" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
