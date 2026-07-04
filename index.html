@@ -96,14 +96,22 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .prob-divider{display:flex;align-items:center;gap:16px;margin:36px auto 0}
 .prob-divider::before,.prob-divider::after{content:"";flex:1;height:1px;background:var(--line-strong)}
 .prob-divider svg{width:15px;height:15px;color:var(--mut);opacity:.6;flex-shrink:0}
-.prob-conc-lead,.prob-pillars{position:relative;z-index:1}
-.prob-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.pillar{border-top:2px solid rgba(255,255,255,.16);padding-top:15px}
-.pl-no{font-size:12px;font-weight:800;letter-spacing:.08em;color:#9DBBF2}
-.pillar b{display:block;color:#fff;font-size:16px;font-weight:800;margin:8px 0 7px}
-.pillar p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.76)}
+.prob-conc-lead,.prob-shift{position:relative;z-index:1}
+.prob-shift{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:16px}
+.shift-item{display:flex;flex-direction:column;gap:9px;padding:18px 20px;border-radius:9px}
+.st-tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.03em}
+.shift-item .st-tag svg{width:16px;height:16px;color:inherit;flex-shrink:0}
+.shift-item p{font-size:14.5px;line-height:1.6}
+.shift-old{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.shift-old .st-tag{color:rgba(255,255,255,.55)}
+.shift-old p{color:rgba(255,255,255,.62)}
+.shift-new{background:rgba(157,187,242,.1);border:1px solid rgba(157,187,242,.3)}
+.shift-new .st-tag{color:#9DBBF2}
+.shift-new p{color:#fff}
+.shift-arrow{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4)}
+.shift-arrow svg{width:24px;height:24px;color:inherit}
 .prob-conc .wm{position:absolute;right:-52px;top:50%;transform:translateY(-50%);height:220px;width:auto;opacity:.12;filter:brightness(0) invert(1);pointer-events:none;user-select:none;z-index:0}
-@media(max-width:640px){.probsec .sec-seal{height:88px;margin-bottom:16px}.prob-pillars{grid-template-columns:1fr;gap:16px}}
+@media(max-width:640px){.probsec .sec-seal{height:88px;margin-bottom:16px}.prob-shift{grid-template-columns:1fr;gap:12px}.shift-arrow{transform:rotate(90deg)}}
 @media(max-width:760px){.prob-conc .wm{display:none}}
 
 /* 솔루션 소개 (3카드) */
@@ -270,7 +278,7 @@ footer .wrap{padding:56px 24px 32px}
       <div class="kicker" data-en="By essence, not by name">이름이 아니라, 본질로</div>
       <h2 data-en="Threats slip in wearing a normal face — and there was no way to see their true nature.">정상인 척 숨어든 위협, 본질을 볼 방법이 없었습니다.</h2>
     </div>
-    <p class="prob-origin" data-en="Hechi (해치) is one of the old names for the Haetae (獬豸) — a mythical beast said to tell right from wrong by essence, not by appearance or name, lowering its single horn at whoever hid guilt. It still stands as a guardian symbol before Gwanghwamun today.">해치(Hechi)는 상상 속 신수 해태(獬豸)의 옛 이름 중 하나입니다. 해태는 겉모습이나 이름이 아니라 본질로 옳고 그름을 가리고, 죄를 숨긴 자를 외뿔로 들이받았다고 전해지며, 오늘날 광화문 앞을 지키는 상징으로 남아 있습니다.</p>
+    <p class="prob-origin" data-en="Hechi (해치) is one of the old names for the Haetae (獬豸), a mythical creature of East Asian legend said to discern right from wrong and good from evil.">해치(Hechi)는 선악과 시비를 판단한다는 동아시아 전설 속 상상의 동물 해태(獬豸)의 옛 이름 중 하나입니다.</p>
     <div class="probs">
       <div class="prob">
         <span class="pno">1</span>
@@ -289,21 +297,15 @@ footer .wrap{padding:56px 24px 32px}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
         <p data-en="&lt;b&gt;That is why Hechi exists.&lt;/b&gt; Like the Haetae, it judges by behavior, not by name."><b>그래서 Hechi입니다.</b> 해태처럼 이름이 아니라 행위로 본질을 판단합니다.</p>
       </div>
-      <div class="prob-pillars">
-        <div class="pillar">
-          <span class="pl-no">01</span>
-          <b data-en="Prevent">예방</b>
-          <p data-en="Block known attack patterns in the kernel, before they run.">알려진 공격 패턴을 커널에서 실행 전에 차단</p>
+      <div class="prob-shift">
+        <div class="shift-item shift-old">
+          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span data-en="By name and reputation">이름·평판으로는</span></span>
+          <p data-en="A package that looks normal slips right through, and the malice hidden inside goes unseen.">정상으로 보이는 패키지는 그대로 통과되고, 숨어든 악성 행위는 보이지 않습니다.</p>
         </div>
-        <div class="pillar">
-          <span class="pl-no">02</span>
-          <b data-en="Detect">탐지</b>
-          <p data-en="Continuously catch novel behavior that evades those rules, via userspace rulesets.">우회하는 새로운 행위를 유저스페이스 룰셋으로 상시 탐지·알림</p>
-        </div>
-        <div class="pillar">
-          <span class="pl-no">03</span>
-          <b data-en="Respond">대응</b>
-          <p data-en="An AI engine compiles a first-response report — what happened, and why.">AI 분석 엔진이 초동대응 보고서로 자동 정리</p>
+        <div class="shift-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
+        <div class="shift-item shift-new">
+          <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="By behavior and essence">행위·본질로는</span></span>
+          <p data-en="The real behavior at install and runtime reveals what a name never could.">설치·실행 시점의 실제 행위가, 이름만으로는 알 수 없던 본질을 드러냅니다.</p>
         </div>
       </div>
       <img class="wm" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
