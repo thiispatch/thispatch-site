@@ -35,7 +35,7 @@ html:not([data-lang="en"]) .only-en{display:none}
 /* 상단바 */
 .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;height:66px;padding:0 28px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
-.brand-logo{height:36px;width:auto}
+.brand-logo{height:36px;width:auto;display:block}
 .mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(to bottom,var(--danger) 0 50%,var(--accent) 50% 100%);position:relative;flex-shrink:0}
 .mark::after{content:"";position:absolute;inset:6px;border:2.5px solid #fff}
 .brand strong{font-size:20px;font-weight:800;letter-spacing:-0.01em}
@@ -85,7 +85,7 @@ footer .wrap{padding:56px 24px 32px}
 .f-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
 .f-brand{max-width:38ch}
 .f-brand .brand strong{color:#fff}
-.f-brand .brand-logo{height:34px;filter:brightness(0) invert(1)}
+.f-brand .brand-logo{height:32px;filter:brightness(0) invert(1)}
 .f-brand p{margin-top:14px;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.6)}
 .f-cols{display:flex;gap:64px;flex-wrap:wrap}
 .f-cols h4{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:14px}
@@ -109,7 +109,8 @@ footer .wrap{padding:56px 24px 32px}
 <!-- ============ 상단바 ============ -->
 <header class="topbar">
   <a class="brand" href="index.html" aria-label="ThisPatch 홈">
-    <span class="mark" aria-hidden="true"></span>
+    <img class="brand-logo" src="assets/logo-thispatch.png" alt="ThisPatch" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+    <span class="mark" aria-hidden="true" style="display:none"></span>
     <strong>ThisPatch</strong>
   </a>
   <div class="nav-actions">
@@ -238,7 +239,8 @@ footer .wrap{padding:56px 24px 32px}
     <div class="f-top">
       <div class="f-brand">
         <a class="brand" href="index.html">
-          <span class="mark" aria-hidden="true"></span>
+          <img class="brand-logo" src="assets/logo-thispatch.png" alt="ThisPatch" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+          <span class="mark" aria-hidden="true" style="display:none"></span>
           <strong>ThisPatch</strong>
         </a>
         <p data-en="A runtime security solution that detects and blocks supply-chain attacks at install and execution time.">공급망 공격을 설치·실행 시점에 탐지하고 차단하는 런타임 보안 솔루션입니다.</p>
