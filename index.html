@@ -44,6 +44,8 @@ html:not([data-lang="en"]) .only-en{display:none}
 .mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(to bottom,var(--danger) 0 50%,var(--accent) 50% 100%);position:relative;flex-shrink:0}
 .mark::after{content:"";position:absolute;inset:6px;border:2.5px solid #fff}
 .brand strong{font-size:20px;font-weight:800;letter-spacing:-0.01em}
+.brand-logo{height:36px;width:auto;display:block}
+.f-brand .brand-logo{height:32px;filter:brightness(0) invert(1)}
 .nav-actions{display:flex;align-items:center;gap:6px}
 .lang-toggle{display:flex;align-items:center;gap:6px;padding:8px 12px;font:inherit;font-size:14px;font-weight:700;color:var(--body);background:none;border:1px solid transparent;border-radius:var(--r-sm);cursor:pointer}
 .lang-toggle:hover{background:var(--wash);color:var(--ink)}
@@ -165,6 +167,7 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .video:hover .play{transform:scale(1.06)}
 .video .play svg{width:28px;height:28px;color:var(--accent);margin-left:4px}
 .video .vlabel{position:absolute;bottom:18px;left:22px;color:rgba(255,255,255,.9);font-size:14px;font-weight:600}
+@media (min-width:768px){.video{height:clamp(280px,calc(100dvh - 430px),540px);width:auto}}
 
 /* 도입 3단계 */
 .setup{background:#fff}
@@ -236,7 +239,8 @@ footer .wrap{padding:56px 24px 32px}
 <!-- ============ 상단바 ============ -->
 <header class="topbar">
   <a class="brand" href="#top" aria-label="ThisPatch 홈">
-    <span class="mark" aria-hidden="true"></span>
+    <img class="brand-logo" src="assets/logo-thispatch.png" alt="ThisPatch" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+    <span class="mark" aria-hidden="true" style="display:none"></span>
     <strong>ThisPatch</strong>
   </a>
   <div class="nav-actions">
@@ -280,14 +284,14 @@ footer .wrap{padding:56px 24px 32px}
   <div class="wrap">
     <div class="sec-head">
       <img class="sec-seal" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
-      <h2 data-en="Threats slip in wearing a normal face — and there was no way to see their true nature.">정상인 척 숨어든 위협, 실체를 볼 방법이 없었습니다.</h2>
+      <h2 data-en="Threats that look normal — and slip past install-time checks.">정상처럼 보이는 위협, 설치 전 검사로는 걸러지지 않습니다.</h2>
     </div>
-    <p class="prob-origin" data-en="Hechi (해치) is one of the old names for the Haetae (獬豸), a mythical creature said to discern right from wrong and good from evil.">해치(Hechi)는 선악과 시비를 판단한다는 상상의 동물 해태(獬豸)의 옛 이름 중 하나입니다.</p>
+    <p class="prob-origin" data-en="Hechi is named after the Haetae (獬豸), the mythical creature that tells right from wrong.">해치(Hechi)는 옳고 그름을 가리는 상상의 동물 해태(獬豸)에서 온 이름입니다.</p>
     <div class="probs">
       <div class="prob">
         <span class="pno">1</span>
         <h3 data-en="It blends into normal behavior — and erases the traces.">정상 행위에 섞여들고, 흔적까지 지웁니다.</h3>
-        <p data-en="They ride in through a library or package manager and, inside install/run scripts (e.g. postinstall) and runtime processes, blend into normal operation — erasing logs, performing abnormal actions, and siphoning credentials out. Each action on its own looks normal, so without the context that links them it can't be told apart — and with logs erased at runtime, it's hard to confirm even after the fact.">라이브러리나 패키지 매니저를 타고 들어와, 설치·실행 스크립트(예: postinstall)와 런타임 프로세스 안에서 정상 동작에 섞여 로그를 지우고 이상 행위를 수행하며 크리덴셜을 외부로 빼돌립니다. 하나하나의 동작은 정상이라 여러 행위를 잇는 맥락 없이는 가려낼 수 없고, 로그마저 런타임에 지워져 뒤늦게도 확인하기 어렵습니다.</p>
+        <p data-en="It slips in through a library or package manager, blending into install/run flows (e.g. postinstall) — yet each action looks normal, so it can't be told apart without the context that links them.">라이브러리·패키지 매니저를 타고 설치·실행(예: postinstall) 흐름에 섞여 들지만, 개별 동작은 정상이라 여러 행위를 잇는 맥락 없이는 가려내기 어렵습니다.</p>
         <div class="prob-flow" aria-hidden="true">
           <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span data-en="Many normal actions">정상 행위 다수</span></div>
           <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
@@ -299,7 +303,7 @@ footer .wrap{padding:56px 24px 32px}
       <div class="prob">
         <span class="pno">2</span>
         <h3 data-en="You couldn't predict it, or prevent it in time.">예측할 수도, 미리 막을 수도 없었습니다.</h3>
-        <p data-en="Even when credentials leak from a single package you trusted, you usually find out only after the damage lands — in the news, or as a bill. Existing commercial tools can't watch this behavior continuously at runtime, so neither prediction nor prevention was ever really within reach.">믿고 설치한 패키지 하나에서 크리덴셜이 새어 나가도, 대개는 기사화되거나 예상치 못한 청구서처럼 피해가 터진 뒤에야 알게 됩니다. 기존 상용 도구로는 실행 시점의 이런 행위를 상시로 관측하기 어려워, 예측도 예방도 손에 잡히지 않았습니다.</p>
+        <p data-en="Existing commercial tools can't watch this behavior continuously at runtime, so prediction and prevention were both hard.">기존 상용 도구로는 실행 시점의 이런 행위를 상시로 관측하기 어려워, 예측도 예방도 어려웠습니다.</p>
         <div class="prob-flow" aria-hidden="true">
           <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span data-en="Installed in good faith">신뢰하고 설치</span></div>
           <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
@@ -313,7 +317,7 @@ footer .wrap{padding:56px 24px 32px}
     <div class="prob-conc">
       <div class="prob-conc-lead">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        <p data-en="&lt;b&gt;That is why Hechi exists.&lt;/b&gt; Like the Haetae, it judges by the actual behavior at runtime — not by a package's name or reputation."><b>그래서 Hechi입니다.</b> 해태처럼, 패키지의 이름·평판이 아니라 실행 시점의 실제 행위로 본질을 판단합니다.</p>
+        <p data-en="&lt;b&gt;That is why it's Hechi.&lt;/b&gt; It judges by the actual behavior at runtime, not by a package's name or reputation."><b>그래서 Hechi입니다.</b> 이름·평판이 아니라 실행 시점의 실제 행위로 판단합니다.</p>
       </div>
       <div class="prob-shift">
         <div class="shift-item shift-old">
@@ -323,7 +327,7 @@ footer .wrap{padding:56px 24px 32px}
         <div class="shift-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
         <div class="shift-item shift-new">
           <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="By runtime dynamic analysis">런타임 동적 분석으로는</span></span>
-          <p data-en="Only by observing and analyzing the actual behavior at install and runtime does the malice — invisible by name — come to light.">설치·실행 시점의 실제 행위를 런타임에서 관측·분석해야, 이름만으로는 알 수 없던 악성의 본질이 드러납니다.</p>
+          <p data-en="Only by observing and analyzing the actual behavior at install and runtime can you catch malicious activity a name alone can't reveal.">설치·실행 시점의 실제 행위를 런타임에서 관측·분석해야, 이름만으로는 알 수 없던 악성 행위를 잡아냅니다.</p>
         </div>
       </div>
       <img class="wm" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
@@ -337,7 +341,7 @@ footer .wrap{padding:56px 24px 32px}
     <div class="sec-head">
       <div class="kicker" data-en="Overview">솔루션 소개</div>
       <h2 data-en="A runtime security solution that detects, blocks, and analyzes supply-chain threats at npm install and run time.">npm 설치·실행 시점의 공급망 위협을 탐지·차단·분석하는 런타임 보안 솔루션입니다.</h2>
-      <p class="lead" data-en="It collects file, network, and process behavior at the kernel level during npm install and execution, and runs prevention, detection, and response on top of that record.">npm 설치·실행 중 발생하는 파일·네트워크·프로세스 행위를 커널 레벨에서 수집하고, 이를 통해 그 기록 위에서 예방·탐지·대응을 수행합니다.</p>
+      <p class="lead" data-en="It collects file, network, and process behavior at the kernel level during npm install and execution, and runs prevention, detection, and response on that record.">npm 설치·실행 중의 파일·네트워크·프로세스 행위를 커널 레벨에서 수집하고, 이를 바탕으로 예방·탐지·대응합니다.</p>
     </div>
     <div class="cols">
       <div>
@@ -364,8 +368,8 @@ footer .wrap{padding:56px 24px 32px}
   <div class="wrap">
     <div class="sec-head">
       <div class="kicker" data-en="What you get">제공 기능</div>
-      <h2 data-en="From the forest to the trees to the action — one flow.">숲과 나무, 그리고 조치까지 하나의 흐름으로.</h2>
-      <p class="lead" data-en="See the forest on the dashboard, the trees in the detail and rulesets, and harvest the outcome with the report — all in one flow.">대시보드를 통한 숲을, 상세 내용과 룰셋을 통한 나무를, 보고서를 통한 조치를 하나의 흐름으로 이어갑니다.</p>
+      <h2 data-en="From detection to response — in one flow.">탐지 현황부터 대응까지, 하나의 흐름으로.</h2>
+      <p class="lead" data-en="Status on the dashboard, cause in the detail and rulesets, response in the report — one flow.">대시보드에서 현황을, 상세·룰셋에서 원인을, 보고서에서 대응까지 이어집니다.</p>
     </div>
 
     <div class="feature">
@@ -373,8 +377,8 @@ footer .wrap{padding:56px 24px 32px}
         <div class="shot"><div class="ph"><b>Hechi 대시보드</b></div><img src="assets/dashboard.png" alt="Hechi 대시보드" onerror="this.style.display='none'"></div>
       </div>
       <div>
-        <div class="feature-tag" data-en="Dashboard · the forest">대시보드 · 숲</div>
-        <h3 data-en="See the forest — every threat at a glance.">숲을 봅니다 — 위협 현황 한눈에.</h3>
+        <div class="feature-tag" data-en="Dashboard">대시보드</div>
+        <h3 data-en="Every threat at a glance.">위협 현황을 한눈에.</h3>
         <p data-en="Detection status, handling state, and sensor health are gathered into one dashboard, so you see the whole picture first.">탐지 현황과 처리 상태, 센서 상태를 하나의 대시보드에 모아 전체 그림을 먼저 봅니다.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Severity, status, and occurrence time at a glance">심각도·상태·발생 시점 요약</span></li>
@@ -388,8 +392,8 @@ footer .wrap{padding:56px 24px 32px}
         <div class="shot"><div class="ph"><b>위협 상세 · 룰셋</b></div><img src="assets/threat-detail.png" alt="위협 상세 및 룰셋" onerror="this.style.display='none'"></div>
       </div>
       <div>
-        <div class="feature-tag" data-en="Detail · rulesets · the trees">위협 상세 · 룰셋 · 나무</div>
-        <h3 data-en="See the trees — what is risky, and why.">나무를 봅니다 — 무엇이 왜 위험한지.</h3>
+        <div class="feature-tag" data-en="Detail · rulesets">위협 상세 · 룰셋</div>
+        <h3 data-en="What is risky, and why.">무엇이 왜 위험한지.</h3>
         <p data-en="For each detection, check the AI summary, verdict score, the rulesets that fired, and the impact scope — all on one screen.">각 탐지의 AI 요약과 판정 점수, 적용된 룰셋, 영향 범위를 한 화면에서 확인합니다.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-en="The observed behavior and rulesets behind the detection">탐지를 유발한 실제 관찰 행위와 룰셋</span></li>
@@ -403,8 +407,8 @@ footer .wrap{padding:56px 24px 32px}
         <div class="shot"><div class="ph"><b>악성 행위 분석 보고서</b></div><img src="assets/report.png" alt="악성 행위 분석 보고서" onerror="this.style.display='none'"></div>
       </div>
       <div>
-        <div class="feature-tag" data-en="Report · the outcome">악성 행위 보고서 · 열매</div>
-        <h3 data-en="Harvest the outcome — from report to action.">열매를 거둡니다 — 보고서로 조치까지.</h3>
+        <div class="feature-tag" data-en="Report">악성 행위 보고서</div>
+        <h3 data-en="From report to response.">보고서로 대응까지.</h3>
         <p data-en="What happened, when, and why — organized into a summary, timeline, and rationale you can use directly for first response and post-incident reporting.">무엇이 언제 왜 발생했는지 요약·타임라인·판단 근거로 정리해, 초동대응과 사후 보고에 바로 씁니다.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-en="Timeline and rationale generated automatically">요약·타임라인·판단 근거 자동 구성</span></li>
@@ -502,7 +506,8 @@ footer .wrap{padding:56px 24px 32px}
     <div class="f-top">
       <div class="f-brand">
         <a class="brand" href="#top">
-          <span class="mark" aria-hidden="true"></span>
+          <img class="brand-logo" src="assets/logo-thispatch.png" alt="ThisPatch" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';">
+          <span class="mark" aria-hidden="true" style="display:none"></span>
           <strong>ThisPatch</strong>
         </a>
         <p data-en="A runtime security solution that prevents, detects, and responds to supply-chain attacks by their behavior at install and execution time.">설치·실행 시점의 행위로 공급망 공격을 예방·탐지·대응하는 런타임 보안 솔루션입니다.</p>
