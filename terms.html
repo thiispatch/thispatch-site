@@ -13,6 +13,7 @@ body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD
 .nav{border-bottom:1px solid var(--line)}
 .nav .wrap{max-width:1120px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.brand-logo{height:36px;width:auto;display:block}
 .brand .mark{width:26px;height:26px;background:linear-gradient(to bottom,var(--danger) 0 50%,var(--accent) 50% 100%);position:relative}
 .brand .mark::after{content:"";position:absolute;inset:7px;border:2.5px solid #fff}
 .brand strong{font-size:19px;font-weight:800}
@@ -32,7 +33,7 @@ footer .wrap{max-width:840px;margin:0 auto;padding:24px;font-size:13px;color:var
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><strong>ThisPatch</strong></a>
+    <a class="brand" href="index.html"><img class="brand-logo" src="assets/logo-thispatch.png" alt="ThisPatch" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"><span class="mark" aria-hidden="true" style="display:none"></span><strong>ThisPatch</strong></a>
   </div>
 </header>
 
