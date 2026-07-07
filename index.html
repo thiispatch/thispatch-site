@@ -284,14 +284,14 @@ footer .wrap{padding:56px 24px 32px}
   <div class="wrap">
     <div class="sec-head">
       <img class="sec-seal" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
-      <h2 data-en="Threats that look normal — and slip past install-time checks.">정상처럼 보이는 위협, 설치 전 검사로는 걸러지지 않습니다.</h2>
+      <h2 data-en="Threats that look normal go undetected by install-time checks.">정상처럼 보이는 위협은 설치 전 검사로 탐지되지 않습니다.</h2>
     </div>
     <p class="prob-origin" data-en="Hechi is named after the Haetae (獬豸), the mythical creature that tells right from wrong.">해치(Hechi)는 옳고 그름을 가리는 상상의 동물 해태(獬豸)에서 온 이름입니다.</p>
     <div class="probs">
       <div class="prob">
         <span class="pno">1</span>
-        <h3 data-en="It blends into normal behavior — and erases the traces.">정상 행위에 섞여들고, 흔적까지 지웁니다.</h3>
-        <p data-en="It slips in through a library or package manager, blending into install/run flows (e.g. postinstall) — yet each action looks normal, so it can't be told apart without the context that links them.">라이브러리·패키지 매니저를 타고 설치·실행(예: postinstall) 흐름에 섞여 들지만, 개별 동작은 정상이라 여러 행위를 잇는 맥락 없이는 가려내기 어렵습니다.</p>
+        <h3 data-en="It abuses trusted dev and delivery tools.">신뢰하는 개발·배포 도구를 악용합니다.</h3>
+        <p data-en="It comes in through trusted libraries, package managers, and build/delivery tools.&lt;br&gt;Each action looks normal, so it can't be told apart without the context that links them.">믿고 쓰는 라이브러리·패키지 매니저, 빌드·배포 도구를 통해 들어옵니다.<br>개별 동작은 정상이라, 맥락 없이는 악성 행위를 가려내기 어렵습니다.</p>
         <div class="prob-flow" aria-hidden="true">
           <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span data-en="Many normal actions">정상 행위 다수</span></div>
           <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
@@ -302,14 +302,14 @@ footer .wrap{padding:56px 24px 32px}
       </div>
       <div class="prob">
         <span class="pno">2</span>
-        <h3 data-en="You couldn't predict it, or prevent it in time.">예측할 수도, 미리 막을 수도 없었습니다.</h3>
-        <p data-en="Existing commercial tools can't watch this behavior continuously at runtime, so prediction and prevention were both hard.">기존 상용 도구로는 실행 시점의 이런 행위를 상시로 관측하기 어려워, 예측도 예방도 어려웠습니다.</p>
+        <h3 data-en="Predicting and preventing it up front isn't easy.">예측도 사전 예방도 쉽지 않습니다.</h3>
+        <p data-en="Commercial tools detect and respond to threats that are already known.&lt;br&gt;Unknown attacks can only be caught by watching the actual behavior at execution time.">기존 상용 도구는 이미 알려진 위협을 탐지하고 대응합니다.<br>알려지지 않은 공격은, 실행 시점에 벌어지는 실제 행위를 봐야 잡을 수 있습니다.</p>
         <div class="prob-flow" aria-hidden="true">
           <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span data-en="Installed in good faith">신뢰하고 설치</span></div>
           <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
           <div class="pf-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span data-en="Runs normally, leaks quietly">정상처럼 동작·유출</span></div>
           <div class="pf-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
-          <div class="pf-node danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-en="Noticed only after it blows up">터진 뒤에야 인지</span></div>
+          <div class="pf-node danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-en="Noticed only after an incident">사고 후에야 인지</span></div>
         </div>
       </div>
     </div>
@@ -317,17 +317,17 @@ footer .wrap{padding:56px 24px 32px}
     <div class="prob-conc">
       <div class="prob-conc-lead">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        <p data-en="&lt;b&gt;That is why it's Hechi.&lt;/b&gt; It judges by the actual behavior at runtime, not by a package's name or reputation."><b>그래서 Hechi입니다.</b> 이름·평판이 아니라 실행 시점의 실제 행위로 판단합니다.</p>
+        <p data-en="Hechi judges by the &lt;b&gt;actual behavior at runtime&lt;/b&gt;, not by a package name.">Hechi는 패키지명이 아니라 <b>실행 시점의 실제 행위</b>로 판단합니다.</p>
       </div>
       <div class="prob-shift">
         <div class="shift-item shift-old">
           <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg><span data-en="By static analysis">정적 분석으로는</span></span>
-          <p data-en="Vetting a package's name, reputation, or code before install lets anything that looks normal pass straight through.">이름·평판이나 코드를 설치 전에 훑는 것만으로는, 정상으로 보이는 패키지가 그대로 통과됩니다.</p>
+          <p data-en="Scanning only a package name or its code before install lets anything that looks normal pass straight through.">설치 전에 패키지명이나 코드만 훑으면, 정상으로 보이는 패키지는 그대로 통과됩니다.</p>
         </div>
         <div class="shift-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
         <div class="shift-item shift-new">
           <span class="st-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><span data-en="By runtime dynamic analysis">런타임 동적 분석으로는</span></span>
-          <p data-en="Only by observing and analyzing the actual behavior at install and runtime can you catch malicious activity a name alone can't reveal.">설치·실행 시점의 실제 행위를 런타임에서 관측·분석해야, 이름만으로는 알 수 없던 악성 행위를 잡아냅니다.</p>
+          <p data-en="Only by observing the actual behavior at install and run time can you catch malicious activity a package name can't reveal.">설치·실행 시점의 실제 행위를 관측해야, 패키지명만으로는 알 수 없던 악성 행위를 잡아냅니다.</p>
         </div>
       </div>
       <img class="wm" src="assets/hechi-emblem.png" alt="" aria-hidden="true">
