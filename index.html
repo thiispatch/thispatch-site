@@ -162,11 +162,8 @@ h2{font-size:clamp(27px,3.4vw,37px);font-weight:700;line-height:1.28;letter-spac
 .demo{background:var(--wash)}
 .demo .sec-head{margin:0 auto;text-align:center}
 .demo .lead{margin-left:auto;margin-right:auto}
-.video{position:relative;margin:48px auto 0;max-width:960px;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(135deg,#141D31,#28385a);box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;cursor:pointer}
-.video .play{width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;transition:transform .18s}
-.video:hover .play{transform:scale(1.06)}
-.video .play svg{width:28px;height:28px;color:var(--accent);margin-left:4px}
-.video .vlabel{position:absolute;bottom:18px;left:22px;color:rgba(255,255,255,.9);font-size:14px;font-weight:600}
+.video{display:block;width:100%;position:relative;margin:48px auto 0;max-width:960px;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;background:#000;box-shadow:var(--shadow-lg)}
+.video iframe{width:100%;height:100%;border:0;display:block}
 @media (min-width:768px){.video{height:clamp(280px,calc(100dvh - 430px),540px);width:auto}}
 
 /* 도입 3단계 */
@@ -266,7 +263,7 @@ footer .wrap{padding:56px 24px 32px}
       </h1>
       <p class="lead" data-en="Hechi is a runtime security solution that prevents, detects, and responds to supply-chain attacks based on behavior at install and run time.<br>Attacks resembling known ones are blocked at the kernel; novel ones are detected instantly and compiled into a report ready for first response.">Hechi는 설치·실행 시점의 행위로 공급망 공격을 예방·탐지·대응하는 런타임 보안 솔루션입니다.<br>비슷한 공격은 커널에서 차단하고, 새로운 공격은 즉시 탐지해 초동대응 가능한 보고서로 정리합니다.</p>
       <div class="hero-actions">
-        <a class="btn btn-solid" href="#demo" data-en="Request a demo">데모 요청</a>
+        <a class="btn btn-solid" href="#demo" data-en="Watch the demo">데모 영상 보기</a>
         <a class="btn btn-ghost" href="contact.html" data-en="Contact">도입 문의</a>
       </div>
     </div>
@@ -447,10 +444,9 @@ footer .wrap{padding:56px 24px 32px}
       <div class="kicker" data-en="Demo">데모</div>
       <h2 data-en="See known malicious behavior blocked before it runs — in a live demo.">알려진 악성 행위가 실행 전에 차단되는 과정을, 라이브 데모로 확인하세요.</h2>
     </div>
-    <a class="video" href="contact.html" aria-label="라이브 데모 요청하기">
-      <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-      <span class="vlabel" data-en="Request a live demo">라이브 데모 요청하기</span>
-    </a>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/99_6JUr9NSw?rel=0" title="Hechi 라이브 데모" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
